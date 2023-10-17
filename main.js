@@ -8,8 +8,9 @@ if (window.DeviceOrientationEvent) {
   
       console.log('Gamma (Z-axis rotation):', gamma);
       console.log('Beta (X-axis rotation):', beta);
-      const gyroscope = document.getElementById('gyroscope')
-      gyroscope.innerHTML = `Gamma: ${gamma}    Beta: ${beta} `
+      const gyroscope = document.getElementById('gyroscope');
+      console.log(gyroscope);
+      gyroscope.innerHTML = `Gamma: ${gamma}    Beta: ${beta} `;
     }
   } else {
     console.log('DeviceOrientationEvent is not supported on this device.');
