@@ -53,20 +53,21 @@
         </a-entity>
       </a-camera>
 
-      <a-camera>
-        <a-entity
-        position="0.032 0 0"
-        secondary-camera="outputElement:#viewport2"
-        text="align: center;
-              width: 6;
-              wrapCount: 100;
-              color: black;
-              value: Click or tap to start video"
-        hide-on-play="#video">
-      </a-entity>
-      </a-camera>
-
     </a-scene>
     <script src="main.js"></script>
+    <script>
+        // This will be our script to force VR mode.
+        window.addEventListener('load', function () {
+          // we need to wait until the scene is loaded before trying to switch to VR mode
+          var scene = document.querySelector('a-scene');
+          if (scene.hasLoaded) {
+            scene.enterVR();
+          } else {
+            scene.addEventListener('loaded', function () {
+              scene.enterVR();
+            });
+          }
+        });
+    </script>
   </body>
 </html>
