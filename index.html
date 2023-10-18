@@ -50,7 +50,7 @@
       
         void main() {
           float scale = 0.9; // Adjust scale as needed
-          float distortion = 0.3; // Adjust distortion factor as needed
+          float distortion = 0.9; // Adjust distortion factor as needed
           vec2 uv = vUv * 2.0 - 1.0;
           vec2 uv2 = uv * (1.0 + scale * dot(uv, uv));
           uv2 = (uv2 + 1.0) / 2.0;
