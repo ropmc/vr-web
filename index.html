@@ -17,6 +17,10 @@
         } else {
           scene.addEventListener('loaded', function () {
             scene.enterVR();
+            var video = document.querySelector('#video');
+            if (video.paused) {
+            video.play();
+            }
           });
         }
       });
