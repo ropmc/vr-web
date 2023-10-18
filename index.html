@@ -41,16 +41,9 @@
         visible="false"
         play-on-click>
       </a-videosphere>
-      <a-camera>
-        <a-entity
-          position="0 0 -1.5"
-          text="align: center;
-                width: 6;
-                wrapCount: 100;
-                color: black;
-                value: Click or tap to start video"
-          hide-on-play="#video">
-        </a-entity>
+      <a-camera position="0 1.6 0">
+        <a-entity position="-0.032 0 0"></a-entity> <!-- Left eye -->
+        <a-entity position="0.032 0 0"></a-entity> <!-- Right eye -->
       </a-camera>
     </a-scene>
     <script src="main.js"></script>
