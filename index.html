@@ -33,21 +33,6 @@
       .viewport2 {
         border-left: none; /* Remove left border for viewport2 */
       }
-  
-      @media (orientation: landscape) {
-        body {
-          height: 100%; /* Set body height to 100% in landscape orientation */
-        }
-  
-        .whole-body {
-          flex-direction: row; /* Arrange viewports side by side in landscape */
-        }
-  
-        .viewport1, .viewport2 {
-          height: 100%; /* Set viewport height to 100% in landscape */
-          width: 50%; /* Divide width equally between the viewports */
-        }
-      }
   </style>
   </head>
   <body>
@@ -109,10 +94,10 @@
 
 
     </a-scene>
-  <div id="viewport1" style="position:absolute;  border-style: solid; left: 0px; top: 0px; width: 50%; height:100%">
+  <div id="viewport1" style="position:absolute;  border-style: solid; left: 0px; top: 0px; width: 100%; height:50%">
   </div>
 
-  <div id="viewport2" style="position:absolute; border-style: solid; right: 0px; top:0px; width: 50%; height:100%">
+  <div id="viewport2" style="position:absolute; border-style: solid; right: 0px; top:0px; width: 100%; height: 50%">
   </div>
 
     <script src="main.js"></script>
