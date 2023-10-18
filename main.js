@@ -31,4 +31,5 @@ AFRAME.registerShader('barrel-distortion', {
       }
     `
   });
+
   
