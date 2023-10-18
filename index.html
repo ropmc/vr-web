@@ -8,33 +8,6 @@
     <script src="play-on-click.js"></script>
     <script src="hide-on-play.js"></script>
     <script>
-        // Register a custom A-Frame component
-        AFRAME.registerComponent('renderer-custom-properties', {
-          init: function() {
-            // This will be called once when the component is attached to the entity.
-  
-            // Get the Three.js renderer from the A-Frame scene.
-            var renderer = this.el.sceneEl.renderer;
-  
-            // Now we have direct access to the Three.js renderer and can modify its properties.
-            if (renderer) {
-              // Set autoClear to false, so the renderer doesn't automatically clear before rendering.
-              renderer.autoClear = false;
-            }
-          }
-        });
-        // This will be our script to force VR mode.
-        window.addEventListener('load', function () {
-          // we need to wait until the scene is loaded before trying to switch to VR mode
-          var scene = document.querySelector('a-scene');
-          if (scene.hasLoaded) {
-            scene.enterVR();
-          } else {
-            scene.addEventListener('loaded', function () {
-              scene.enterVR();
-            });
-          }
-        });
     </script>
 
     <style>
@@ -60,7 +33,7 @@
         URL:    https://bitmovin.com/demos/vr-360
         -->
         <video id="video" preload="auto"
-               src="export1.mp4"
+               src="exp"
                autoplay loop="true"
                crossOrigin="anonymous"></video>
       </a-assets>
