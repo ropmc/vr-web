@@ -7,6 +7,14 @@
     <script src="aframe-master.js"></script>
     <script src="play-on-click.js"></script>
     <script src="hide-on-play.js"></script>
+
+    <!-- TESTE -->
+    <script src="https://cdn.jsdelivr.net/npm/webvr-polyfill@0.10.12/build/webvr-polyfill.min.js"></script>
+    
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <!-- FIM TESTE -->
+
+
     <style>
         body {
           height: 200vh; /* Set body height to 200% of viewport height */
@@ -20,6 +28,28 @@
       </style>
   </head>
   <body>
+
+    
+    <!-- TESTE -->
+    <script>
+        // Check if WebVR is not supported
+        if (!('getVRDisplays' in navigator)) {
+          // Configuration for the polyfill
+          var polyfillConfig = {
+            // Define any configuration specifics here.
+            // For example, you can set it to always provide the fallback, even if there's a native implementation:
+            PROVIDE_MOBILE_VRDISPLAY: true, // Example configuration flag
+            // More configurations go here as needed
+          };
+          
+          // Apply the polyfill with the custom configuration
+          var polyfill = new WebVRPolyfill(polyfillConfig);
+        
+        }
+      </script>
+        <!-- FIM TESTE -->
+
+
     <div class="jump"></div>
     <a-scene>
       <a-assets>
