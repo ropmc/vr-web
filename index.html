@@ -7,8 +7,29 @@
     <script src="aframe-master.js"></script>
     <script src="play-on-click.js"></script>
     <script src="hide-on-play.js"></script>
-    <script>
-    </script>
+    
+    <script id="barrelDistortionVertexShader" type="x-shader/x-vertex">
+        varying vec2 vUv;
+      
+        void main() {
+          vUv = uv;
+          gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+        }
+      </script>
+      
+      <script id="barrelDistortionFragmentShader" type="x-shader/x-fragment">
+        uniform sampler2D inputTexture;
+        varying vec2 vUv;
+      
+        void main() {
+          float scale = 0.9; // Adjust scale as needed
+          vec2 uv = vUv * 2.0 - 1.0;
+          vec2 uv2 = uv * (1.0 + scale * dot(uv, uv));
+          uv2 = (uv2 + 1.0) / 2.0;
+      
+          gl_FragColor = texture2D(inputTexture, uv2);
+        }
+      </script>
 
     <style>
         body {
@@ -45,8 +66,11 @@
       </a-videosphere>
 
       <a-camera position="0 1.6 0">
-        <a-entity position="-0.032 0 0"></a-entity> <!-- Left eye -->
-        <a-entity position="0.032 0 0"></a-entity> <!-- Right eye -->
+        <a-entity position="-0.032 0 0" geometry="primitive: plane; height: 2; width: 2">
+            <a-material shader="#barrelDistortion" src="#video"></a-material>
+          </a-entity>
+          <a-entity position="0.032 0 0" geometry="primitive: plane; height: 2; width: 2">
+            <a-material shader="#barrelDistortion" src="#video"></a-material>
       </a-camera>
     </a-scene>
     <script src="main.js"></script>
