@@ -64,7 +64,7 @@
 
 
       <a-camera id="camera1" position="0 1.6 0" secondary-camera="outputElement:#viewport1">
-        <a-entity position="-0.032 0 0" geometry="primitive: plane; height: 2; width: 2" secondary-camera="outputElement:#viewport2">
+        <a-entity position="-0.032 0 0" geometry="primitive: plane; height: 2; width: 2"> <!-- secondary-camera="outputElement:#viewport1" -->
             <a-material src="#video"></a-material>
           </a-entity>
       </a-camera>
@@ -73,11 +73,7 @@
 
     </a-scene>
 
-  </div>
   <div id="viewport1" style="position:absolute;  border-style: solid; top: 240px; left: 30px; width: 200px; height:200px">
-  </div>
-  </div>
-  <div id="viewport2" style="position:absolute;  border-style: solid; top: 240px; left: 30px; width: 200px; height:200px">
   </div>
     <script src="main.js"></script>
   </body>
