@@ -19760,6 +19760,10 @@ module.exports.Component = registerComponent('device-orientation-permission-ui',
     // Browser doesn't support or doesn't require permission to DeviceOrientationEvent API.
     if (typeof DeviceOrientationEvent === 'undefined' || !DeviceOrientationEvent.requestPermission) {
       this.permissionGranted = true;
+      var videoEl = this.el.getAttribute('material').src;
+      if (!videoEl) { return; }
+      this.el.object3D.visible = true;
+      videoEl.play();
       return;
     }
     this.onDeviceMotionDialogAllowClicked = bind(this.onDeviceMotionDialogAllowClicked, this);
@@ -19799,6 +19803,10 @@ module.exports.Component = registerComponent('device-orientation-permission-ui',
       if (response === 'granted') {
         self.el.emit('deviceorientationpermissiongranted');
         self.permissionGranted = true;
+        var videoEl = this.el.getAttribute('material').src;
+        if (!videoEl) { return; }
+        this.el.object3D.visible = true;
+        videoEl.play();
       } else {
         self.el.emit('deviceorientationpermissionrejected');
       }
