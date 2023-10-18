@@ -1,17 +1,25 @@
-function detectMobileDevice() {
-    return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
-  };
-
-
-document.addEventListener('DOMContentLoaded', (event) => {
-    const isMobile = detectMobileDevice();
-    const fullscreenButton = document.getElementById('fullscreen-btn');
+document.addEventListener('DOMContentLoaded', function() {
+    // Get the <html> element
+    const htmlElement = document.querySelector('html');
   
-    if (isMobile) {
-      fullscreenButton.style.display = 'block';  // This shows the button if the user is on a mobile device
-    } else {
-      fullscreenButton.style.display = 'none';  // This ensures the button is hidden on desktops
+    // Check if the <html> element has the 'a-fullscreen' class
+    if (htmlElement.classList.contains('a-fullscreen')) {
+      // Remove the 'a-fullscreen' class
+      htmlElement.classList.remove('a-fullscreen');
     }
+  });
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Get the element with the specified class
+    const element = document.querySelector('.a-canvas.a-grab-cursor');
   
-    // ... [The rest of your DOMContentLoaded listener code, if you have any]
+    // Check if the element is found
+    if (element) {
+      // Set the CSS properties
+      element.style.position = 'relative';
+      element.style.width = '100vw';
+      element.style.height = '100vh';
+    } else {
+      console.error('Element with class ".a-canvas.a-grab-cursor" not found.');
+    }
   });
