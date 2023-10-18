@@ -1,26 +1,105 @@
 <!DOCTYPE html>
 <html>
   <head>
-      <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-      <script src="multi-camera.js"></script>
-      <script src="mouse-rotate-controls.js"></script>
+    <meta charset="utf-8">
+    <title>Videosphere</title>
+    <meta name="description" content="Videosphere - A-Frame">
+    <script>window.WebVRConfig = {CARDBOARD_UI_DISABLED: false};</script>
+    <script src="aframe-master.js"></script>
+    <script src="play-on-click.js"></script>
+    <script src="hide-on-play.js"></script>
+    
+    <!--
+    <script>
+        AFRAME.registerShader('custom-distortion', {
+          schema: {
+            distortion: {type: 'vec4', is: 'uniform'}, // Assuming it's a vec4, please change accordingly
+          },
+          vertexShader: `
+            attribute vec2 aVertexPosition;
+            attribute vec2 aTextureCoord;
+            uniform mat4 uMVMatrix;
+            uniform mat4 uPMatrix;
+            varying highp vec2 vTextureCoord;
+            void main(void) {
+              gl_Position = uPMatrix * uMVMatrix * vec4(aVertexPosition, 0.0, 1.0);
+              vTextureCoord = aTextureCoord;
+            }
+          `,
+          fragmentShader: `
+            #ifdef GL_ES
+            precision highp float;
+            #endif
+            uniform sampler2D uSampler;
+            varying highp vec2 vTextureCoord;
+            uniform highp vec4 uDistortion;
+            void main(void) {
+              highp vec2 r = vTextureCoord - uDistortion.xy;
+              highp float l = length(r);
+              highp vec2 g = r / l;
+              highp float d = (uDistortion.z + uDistortion.w * l) * l;
+              highp vec2 v = uDistortion.xy + d * g;
+              gl_FragColor = texture2D(uSampler, vec2(v.s, v.t));
+            }
+        `
+        });
+      </script> -->
+      
+      <script id="barrelDistortionFragmentShader" type="x-shader/x-fragment">
+        uniform sampler2D inputTexture;
+        varying vec2 vUv;
+      
+        void main() {
+          float scale = 0.9; // Adjust scale as needed
+          float distortion = 0.9; // Adjust distortion factor as needed
+          vec2 uv = vUv * 2.0 - 1.0;
+          vec2 uv2 = uv * (1.0 + scale * dot(uv, uv));
+          uv2 = (uv2 + 1.0) / 2.0;
+      
+          // Apply barrel distortion
+          uv2 = uv2 * (1.0 + distortion * pow(length(uv2), 2.0));
+      
+          gl_FragColor = texture2D(inputTexture, uv2);
+        }
+      </script>
+
+    <style>
+        body {
+          height: 200vh; /* Set body height to 200% of viewport height */
+        }
+
+        .jump{
+            height: 200px;
+            position:relative;
+            z-index: 0;
+        }
+        
+        .viewport2{
+            height: 200px;
+        }
+
+        .viewport3{
+            height: 200px;
+        }
+      </style>
   </head>
   <body>
-    
-    <a-scene><!-- vr-mode-ui="enabled: false">-->
-        <a-assets>
-            <!--
-            SOURCE
-            Author: Bitmovin
-            URL:    https://bitmovin.com/demos/vr-360
-            -->
-            <video id="video" preload="auto"
-                   src="export1.mp4" 
-                   autoplay loop="true"
-                   crossOrigin="anonymous"></video>
-        </a-assets>
 
-        <a-videosphere
+    <div class="viewport2"></div>
+    <div class="viewport3"></div>
+    <a-scene>
+      <a-assets>
+        <!--
+        SOURCE
+        Author: Bitmovin
+        URL:    https://bitmovin.com/demos/vr-360
+        -->
+        <video id="video" preload="auto"
+               src="export1.mp4" 
+               autoplay loop="true"
+               crossOrigin="anonymous"></video>
+      </a-assets>
+      <a-videosphere
         rotation="0 -90 0"
         src="#video"
         visible="false"
@@ -28,11 +107,14 @@
         play-on-click>
       </a-videosphere>
 
-      
-      <a-entity camera look-controls="enabled:false" position="0 1.6 0"></a-entity>
-
-
+      <a-camera position="0 1.6 0">
+        <a-entity position="-0.032 0 0" geometry="primitive: plane; height: 2; width: 2" secondary-camera="outputElement:#viewport2">
+            <a-material src="#video"></a-material>
+          </a-entity>
+          <a-entity position="0.032 0 0" geometry="primitive: plane; height: 2; width: 2" secondary-camera="outputElement:#viewport3">
+            <a-material src="#video"></a-material>
+      </a-camera>
     </a-scene>
-
+    <script src="main.js"></script>
   </body>
 </html>
