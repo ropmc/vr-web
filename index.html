@@ -54,7 +54,7 @@
         URL:    https://bitmovin.com/demos/vr-360
         -->
         <video id="video" preload="auto"
-               src="exp"
+               src="export1.mp4" 
                autoplay loop="true"
                crossOrigin="anonymous"></video>
       </a-assets>
@@ -62,15 +62,16 @@
         rotation="0 -90 0"
         src="#video"
         visible="false"
+        shader="#barrelDistortion"
         play-on-click>
       </a-videosphere>
 
       <a-camera position="0 1.6 0">
         <a-entity position="-0.032 0 0" geometry="primitive: plane; height: 2; width: 2">
-            <a-material shader="#barrelDistortion" src="#video"></a-material>
+            <a-material src="#video"></a-material>
           </a-entity>
           <a-entity position="0.032 0 0" geometry="primitive: plane; height: 2; width: 2">
-            <a-material shader="#barrelDistortion" src="#video"></a-material>
+            <a-material src="#video"></a-material>
       </a-camera>
     </a-scene>
     <script src="main.js"></script>
