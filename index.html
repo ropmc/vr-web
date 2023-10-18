@@ -63,7 +63,13 @@
     </a-videosphere>
 
 
-      <a-camera id="camera1" position="0 1.6 0" secondary-camera="outputElement:#viewport1">
+      <a-camera id="camera1" position="0 1.6 0">
+        <a-entity position="-0.032 0 0" geometry="primitive: plane; height: 2; width: 2"> <!-- secondary-camera="outputElement:#viewport1" -->
+            <a-material src="#video"></a-material>
+          </a-entity>
+      </a-camera>
+
+      <a-camera id="camera2" position="0 1.6 0" secondary-camera="outputElement:#viewport1" rotation="0 90 0">
         <a-entity position="-0.032 0 0" geometry="primitive: plane; height: 2; width: 2"> <!-- secondary-camera="outputElement:#viewport1" -->
             <a-material src="#video"></a-material>
           </a-entity>
