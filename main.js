@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 document.addEventListener('DOMContentLoaded', function() {
     // Get the element with the specified class
-    const element = document.querySelector('.a-canvas.a-grab-cursor');
+    const element = document.querySelector('a-canvas.a-grab-cursor');
   
     // Check if the element is found
     if (element) {
