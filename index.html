@@ -8,6 +8,8 @@
     <script src="play-on-click.js"></script>
     <script src="hide-on-play.js"></script>
     <script src="main.js"></script>
+    <script src="https://rawgit.com/protyze/aframe-always-fullscreen-component/master/dist/aframe-always-fullscreen-component.min.js"></script>
+    <script src="https://rawgit.com/bestiejs/platform.js/master/platform.js"></script>
     <style>
         body {
           height: 200vh; /* Set body height to 200% of viewport height */
@@ -15,7 +17,7 @@
       </style>
   </head>
   <body>
-    <a-scene>
+    <a-scene embedded always-fullscreen>
       <a-assets>
         <!--
         SOURCE
