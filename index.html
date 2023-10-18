@@ -64,21 +64,25 @@
 
 
       <a-camera id="camera1" position="0 1.6 0" secondary-camera="outputElement:#viewport1">
-        <a-entity position="-0.032 0 0" geometry="primitive: plane; height: 2; width: 2"> <!-- secondary-camera="outputElement:#viewport1" -->
+        <!--
+        <a-entity position="-0.032 0 0" geometry="primitive: plane; height: 2; width: 2">
             <a-material src="#video"></a-material>
-          </a-entity>
+          </a-entity> 
+          !-->
       </a-camera>
 
       <a-camera id="camera2" position="0 500 0" secondary-camera="outputElement:#viewport2" rotation="0 90 0">
-        <a-entity position="-0.032 0 0" geometry="primitive: plane; height: 2; width: 2"> <!-- secondary-camera="outputElement:#viewport1" -->
+        <!--
+        <a-entity position="-0.032 0 0" geometry="primitive: plane; height: 2; width: 2">
             <a-material src="#video"></a-material>
           </a-entity>
+        -->
       </a-camera>
 
 
 
     </a-scene>
-
+  <div class="whole-block"> </div>
   <div id="viewport1" style="position:absolute;  border-style: solid; top: 240px; left: 30px; width: 200px; height:200px">
   </div>
 
