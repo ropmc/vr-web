@@ -12,30 +12,43 @@
     <script src="mouse-rotate-controls.js"></script>
     
     <style>
+      body {
+        height: 100vh; /* Set body height to 100% of viewport height */
+        margin: 0; /* Remove margin to avoid unnecessary space */
+        overflow: hidden; /* Hide overflow to prevent scrolling */
+      }
+  
+      .whole-body {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+      }
+  
+      .viewport1, .viewport2 {
+        flex: 1; /* Divide available space equally between the viewports */
+        border: solid; /* Add border to viewports */
+        box-sizing: border-box; /* Include border in width and height calculations */
+      }
+      
+      .viewport2 {
+        border-left: none; /* Remove left border for viewport2 */
+      }
+  
+      @media (orientation: landscape) {
         body {
-          height: 200vh; /* Set body height to 200% of viewport height */
+          height: 100%; /* Set body height to 100% in landscape orientation */
         }
-
-        .jump{
-            height: 200px;
-            position:relative;
-            z-index: 0;
+  
+        .whole-body {
+          flex-direction: row; /* Arrange viewports side by side in landscape */
         }
-        
-        .viewport2{
-            height: 200px;
+  
+        .viewport1, .viewport2 {
+          height: 100%; /* Set viewport height to 100% in landscape */
+          width: 50%; /* Divide width equally between the viewports */
         }
-
-        .viewport3{
-            height: 200px;
-        }
-
-        .whole-body{
-          display:flex;
-          width: 100vw;
-          height: 100vh;
-        }
-      </style>
+      }
+  </style>
   </head>
   <body>
 <div class="whole-body">
@@ -99,7 +112,7 @@
   <div id="viewport1" style="position:absolute;  border-style: solid; left: 0px; top: 0px; width: 50%; height:100%">
   </div>
 
-  <div id="viewport2" style="position:absolute;  border-style: solid; right: 0px; top:0px; width: 50%; height:100%">
+  <div id="viewport2" style="position:absolute; border-style: solid; right: 0px; top:0px; width: 50%; height:100%">
   </div>
 
     <script src="main.js"></script>
