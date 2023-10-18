@@ -21,8 +21,6 @@
       </style>
   </head>
   <body>
-
-    <div class="jump"></div>
     <a-scene>
       <a-assets>
         <!--
@@ -41,9 +39,26 @@
         visible="false"
         play-on-click>
       </a-videosphere>
-      <a-camera position="0 1.6 0">
-        <a-entity position="-0.032 0 0"></a-entity> <!-- Left eye -->
-        <a-entity position="0.032 0 0"></a-entity> <!-- Right eye -->
+      <a-camera>
+        <a-entity
+          position="-0.032 0 0"
+          text="align: center;
+                width: 6;
+                wrapCount: 100;
+                color: black;
+                value: Click or tap to start video"
+          hide-on-play="#video">
+
+        </a-entity>
+        <a-entity
+        position="0.032 0 0"
+        text="align: center;
+              width: 6;
+              wrapCount: 100;
+              color: black;
+              value: Click or tap to start video"
+        hide-on-play="#video">
+      </a-entity>
       </a-camera>
     </a-scene>
     <script src="main.js"></script>
