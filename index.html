@@ -12,27 +12,34 @@
     <script src="mouse-rotate-controls.js"></script>
     
     <style>
-      body {
-        height: 100vh; /* Set body height to 100% of viewport height */
-        margin: 0; /* Remove margin to avoid unnecessary space */
-        overflow: hidden; /* Hide overflow to prevent scrolling */
-      }
-  
-      .whole-body {
-        display: flex;
-        flex-direction: column;
-        height: 100%;
-      }
-  
-      .viewport1, .viewport2 {
-        flex: 1; /* Divide available space equally between the viewports */
-        border: solid; /* Add border to viewports */
-        box-sizing: border-box; /* Include border in width and height calculations */
-      }
-      
-      .viewport2 {
-        border-left: none; /* Remove left border for viewport2 */
-      }
+        body {
+          height: 100%; /* Set body height to 100% of viewport height */
+          margin: 0; /* Remove margin to avoid unnecessary space */
+          overflow: hidden; /* Hide overflow to prevent scrolling */
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+        a-scene {
+          width: 100%;
+          height: 100%;
+        }
+
+        a-camera {
+          position: 0 1.6 0; /* Adjust camera position accordingly */
+        }
+
+        .viewport1, .viewport2 {
+          width: 50%;
+          height: 100%;
+          border: solid; /* Add border to viewports */
+          box-sizing: border-box; /* Include border in width and height calculations */
+        }
+    
+        .viewport2 {
+          border-left: none; /* Remove left border for viewport2 */
+        }
   </style>
   </head>
   <body>
